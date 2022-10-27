@@ -16,15 +16,15 @@ class Operacao():
         print(f'taxa B3: {self.taxa_b3:.2f}')
 
     #somar B3 + taxa corretagem + valor total(compra)
-    def calcular_valor_total(self):
-        self.taxa_total = self.taxa_b3 + self.taxa_corretagem + self.produto
-        print(f'taxa total(compra): {self.taxa_total:.2f}')
+    def calcular_valor_compra(self):
+        taxa_compra = self.taxa_b3 + self.taxa_corretagem + self.produto
+        print(f'taxa total(compra): {taxa_compra:.2f}')
         
     
     # B3 - taxa de corretagem - valor sem taxas
     def calcular_valor_venda(self):
-        self.taxa_venda = self.produto - self.taxa_corretagem - self.taxa_b3
-        print(f'taxa total(venda): {self.taxa_venda:.2f}')
+        taxa_venda = self.produto - self.taxa_corretagem - self.taxa_b3
+        print(f'taxa total(venda): {taxa_venda:.2f}')
 
 
     #preço medio (compra)
@@ -32,7 +32,11 @@ class Operacao():
         ativo = self.ativo.get()
         precoMedio = (self.taxa_total / self.quantidade) * ativo
         print(f'o preço médio é: {round(precoMedio,2)}')
-            
+    #preco medio (venda)
+    def preco_medio_venda(self):
+        ativo = self.ativo
+        PrecoMedio2 = (self.taxa_venda / self.quantidade) * ativo
+        print(f'o preço médio é: {round(PrecoMedio2,2)}')
     
 
 ''''
@@ -55,9 +59,18 @@ op3.calcular_operacao()
 op3.calcular_taxas_b3()
 op3.calcular_valor_venda()'''
 
-print('============TESTE MEDIA=================')
-op99 = Operacao(100,9.5, 2.5)
+print('============TESTE MEDIA compra=================')
+op99 = Operacao(100,9.5, 2.5,)
 op99.calcular_operacao()
 op99.calcular_taxas_b3()
 op99.calcular_valor_total()
 op99.preco_medio_compra()
+
+
+
+print('============TESTE MEDIA venda=================')
+op99 = Operacao(100,9.5, 2.5,)
+op99.calcular_operacao()
+op99.calcular_taxas_b3()
+op99.calcular_valor_total()
+op99.preco_medio_venda()
